@@ -1,8 +1,8 @@
 import axios from 'axios';
 
+// Dynamically targets Cloud Backend in production, falls back to local port 5005 for development
 const API = axios.create({
-  // Shifts targeting to the fresh, unhijacked port 5005
-  baseURL: 'http://127.0.0.1:5005/api/v1',
+  baseURL: import.meta.env.VITE_API_URL || 'http://127.0.0.1:5005/api/v1',
   headers: {
     'Content-Type': 'application/json',
   },
